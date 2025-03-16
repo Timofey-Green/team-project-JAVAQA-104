@@ -125,7 +125,7 @@ public class SavingAccountTest {
 
         account.pay(600);
 
-        Assertions.assertEquals(initialBalance, account.getBalance());
+        Assertions.assertEquals(initialBalance, account.getBalance()); // Начальный баланс не должен измениться
 
     }
 
@@ -137,7 +137,7 @@ public class SavingAccountTest {
 
         account.pay(-100);
 
-        Assertions.assertEquals(initialBalance, account.getBalance());
+        Assertions.assertEquals(initialBalance, account.getBalance()); // Начальный баланс не должен измениться
 
     }
 }
