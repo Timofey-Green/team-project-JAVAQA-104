@@ -53,18 +53,20 @@ public class SavingAccountTest {
     public void testYearChange() {
 
         SavingAccount account = new SavingAccount(
-                200,
+                150,
                 0,
                 15_000,
                 15);
 
         // Проверка расчета процентов
-        int expected = 30;
+        int expected = 22;
         int actual = account.yearChange();
 
         // Проверка, что фактический результат равен ожидаемому
         Assertions.assertEquals(expected, actual);
     }
+
+
     // Тест метода SavingAccount
 
     @Test
