@@ -548,7 +548,7 @@ public class CreditAccountTest {
         account.pay(5_000);
 
 
-        Assertions.assertEquals(600, account.yearChange());
+        Assertions.assertEquals(-600, account.yearChange());
     }
     //Ошибка. Возникает из-за ошибки в методе pay.
 }
