@@ -23,7 +23,7 @@ public class SavingAccountTest {
 
     @Test
     public void shouldAddMoreThanMaxBalance() {
-        int initialBalance = 1_000;
+        int initialBalance = 4_000;
         int minBalance = 100;
         int maxBalance = 5_000;
         int rate = 5;
@@ -31,7 +31,7 @@ public class SavingAccountTest {
         SavingAccount account = new SavingAccount(initialBalance, minBalance, maxBalance, rate);
 
         // Пополняем счет balance > maxBalance
-        account.add(5_000);
+        account.add(3_000);
         Assertions.assertEquals(initialBalance, account.getBalance()); // Начальный баланс не должен измениться
 
     }
@@ -82,8 +82,11 @@ public class SavingAccountTest {
         Assertions.assertEquals(initialBalance, account.getBalance());
         Assertions.assertEquals(minBalance, account.getMinBalance());
         Assertions.assertEquals(maxBalance, account.getMaxBalance());
+    }
 
-        // Проверяем, что конструктор выбрасывает исключение, если initialBalance не равен minBalance и maxBalance;
+    @Test
+    public void testNewSavingAccountInvalidInitialBalanceMinEqualsMax() {
+        // Проверяем, что конструктор выбрасывает исключение, если initialBalance меньше minBalance;
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(500, 1_000, 2_000, 5);
         });
