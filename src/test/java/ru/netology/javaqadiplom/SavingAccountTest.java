@@ -82,6 +82,7 @@ public class SavingAccountTest {
         Assertions.assertEquals(initialBalance, account.getBalance());
         Assertions.assertEquals(minBalance, account.getMinBalance());
         Assertions.assertEquals(maxBalance, account.getMaxBalance());
+        Assertions.assertEquals(rate,account.getRate());
     }
 
     @Test

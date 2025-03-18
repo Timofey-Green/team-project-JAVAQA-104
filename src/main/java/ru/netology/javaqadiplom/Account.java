@@ -5,10 +5,18 @@ public class Account {
     protected int rate;
 
     public boolean pay(int amount) {
-        return false;
+        if (amount <= 0 || amount > balance) {
+            return false; // Проверка на некорректные суммы
+        }
+        balance -= amount; // Списание средств
+        return true;
     }
 
     public boolean add(int amount) {
+        if (amount > 0) {
+            balance += amount; // Зачисление средств
+            return true;
+        }
         return false;
     }
 
