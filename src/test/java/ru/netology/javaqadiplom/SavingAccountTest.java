@@ -85,21 +85,32 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void testNewSavingAccountInvalidInitialBalanceMinEqualsMax() {
+    public void testNewSavingAccountInvalidInitialBalanceLessMinBalance() {
         // Проверяем, что конструктор выбрасывает исключение, если initialBalance меньше minBalance;
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(500, 1_000, 2_000, 5);
         });
     }
 
-    //Может тут лучше разделить на нескольок тестов? 1.Ошибка при начальном балансе меньше минимального
-    // 2.Ошибка при начальном балансе больше максимального.
+    @Test
+    public void testNewSavingAccountInvalidInitialBalanceMoreMaxBalance() {
+        // Проверяем, что конструктор выбрасывает исключение, если initialBalance больше maxBalance;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new SavingAccount(3000, 1_000, 2_000, 5);
+        });
+    }
 
-
-    // Надо добавить тест "Выбрасывает ошибку, если минимальный баланс отрицательный".
 
     @Test
-    public void testNewSavingAccountNegativRate() {
+    public void testNewSavingAccountInvalidInitialBalance() {
+        // Проверяем, что конструктор выбрасывает исключение, если initialBalance меньше 0;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new SavingAccount(-100, 1_000, 2_000, 5);
+        });
+    }
+
+    @Test
+    public void testNewSavingAccountInvalidRate() {
 
         // Проверяем, что конструктор выбрасывает исключение, если rate < 0
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
